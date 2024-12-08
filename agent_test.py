@@ -13,6 +13,9 @@ load_dotenv()
 # debugpy.listen(5678)
 # debugpy.wait_for_client()
 
+import agentops # type: ignore
+agentops.init(os.getenv("AGENTOPS_API_KEY"), default_tags=["llama-stack-client-example"], auto_start_session=False)
+
 LLAMA_STACK_HOST = "0.0.0.0"
 LLAMA_STACK_PORT = 5001
 INFERENCE_MODEL = "meta-llama/Llama-3.2-1B-Instruct"
@@ -77,4 +80,6 @@ async def agent_test():
         for log in EventLogger().log(response):
             log.print()
 
+agentops.start_session()
 asyncio.run(agent_test())
+agentops.end_session(end_state="Success")

@@ -5,10 +5,9 @@ from llama_stack_client.lib.inference.event_logger import EventLogger
 
 import os
 from dotenv import load_dotenv
+import agentops # type: ignore
 
 load_dotenv()
-
-import agentops
 
 agentops.init(os.getenv("AGENTOPS_API_KEY"), default_tags=["llama-stack-client-example"], auto_start_session=False)
 
@@ -35,11 +34,12 @@ async def stream_test():
             ),
         ],
         model_id=f"{INFERENCE_MODEL}",
-        stream=True,
+        # stream=True,
+        stream=False,
     )
 
-    async for log in EventLogger().log(response):
-        log.print()
+    # async for log in EventLogger().log(response):
+    #     log.print()
 
 
 def main():

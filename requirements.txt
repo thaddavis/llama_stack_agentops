@@ -1,5 +1,6 @@
 llama-stack-client==0.0.57
 termcolor==2.5.0
 python-dotenv==1.0.1
+debugpy===1.8.9
 
--e ./agentops
+-e ../agentops

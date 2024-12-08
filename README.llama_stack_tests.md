@@ -26,5 +26,4 @@ python3 inference_test.py
 touch .env
 echo  "BRAVE_SEARCH_API_KEY=%API_KEY_HERE%" > .env # get an API key from the Brave Search API console
 python3 agent_test.py
-
 ```
